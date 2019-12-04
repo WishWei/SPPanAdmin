@@ -31,6 +31,9 @@ import org.springframework.util.Assert;
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements IUserService {
 
+	/** 新用户默认密码 **/
+	private final static String DEFAULT_PASSWORD = "123456";
+
 	@Autowired
 	private IUserDao userDao;
 	
@@ -65,7 +68,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements I
 			user.setCreateTime(new Date());
 			user.setUpdateTime(new Date());
 			user.setDeleteStatus(0);
-			user.setPassword(MD5Utils.md5("111111"));
+			user.setPassword(MD5Utils.md5(DEFAULT_PASSWORD));
 			save(user);
 		}
 	}
