@@ -6,6 +6,7 @@ import java.util.Set;
 
 import net.sppan.base.common.utils.MD5Utils;
 import net.sppan.base.dao.IUserDao;
+import net.sppan.base.dao.mapper.UserMapper;
 import net.sppan.base.dao.support.IBaseDao;
 import net.sppan.base.entity.Role;
 import net.sppan.base.entity.User;
@@ -36,6 +37,9 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements I
 
 	@Autowired
 	private IUserDao userDao;
+
+	@Autowired
+	private UserMapper userMapper;
 	
 	@Autowired
 	private IRoleService roleService;
@@ -84,7 +88,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements I
 
 	@Override
 	public void grant(Integer id, String[] roleIds) {
-		User user = find(id);
+		User user = userMapper.findUserById(id);
 		Assert.notNull(user, "用户不存在");
 		Assert.state(!"admin".equals(user.getUserName()),"超级管理员用户不能修改管理角色");
 		Role role;

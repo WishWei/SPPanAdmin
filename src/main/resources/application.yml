@@ -20,7 +20,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   freemarker:
     allow-request-override: false
     allow-session-override: false
@@ -47,4 +47,9 @@ spring:
       force: true
       charset: UTF-8
       enabled: true
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
