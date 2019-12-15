@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-@MapperScan({"net.sppan.base.dao.mapper"})
+@MapperScan({"com.wish.dao.mapper"})
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
