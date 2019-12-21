@@ -19,11 +19,11 @@ public abstract class BaseEntity implements Serializable{
 	private static final long serialVersionUID = -250118731239275742L;
 
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
-	@Column(updatable = false, insertable = false, columnDefinition = "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP")
+	@Column(columnDefinition = "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP")
 	private Date createTime;
 
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
-	@Column(insertable = false, columnDefinition = "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
-	private Date UpdateTime;
+	@Column(columnDefinition = "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+	private Date updateTime;
 
 }
