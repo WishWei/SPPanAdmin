@@ -78,7 +78,7 @@ public class BaseController {
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
-    	PageRequest pageRequest = new PageRequest(page, size, sort);
+    	PageRequest pageRequest = sort == null ? PageRequest.of(page, size) : PageRequest.of(page, size, sort);
     	return pageRequest;
     }
     
