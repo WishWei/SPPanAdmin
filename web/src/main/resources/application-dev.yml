@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://118.31.22.156:3306/hh?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false&allowMultiQueries=true
+    username: test
+    password: Test@2019
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update

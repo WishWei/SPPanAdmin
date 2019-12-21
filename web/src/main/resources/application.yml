@@ -1,26 +1,6 @@
-server:
-  tomcat:
-    uri-encoding: UTF-8
-    basedir: web_tomcat
-  servlet:
-    session:
-      timeout: 14400
-  port: 8080
-
-logging:
-  config: classpath:logback.xml
-
 spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://118.31.22.156:3306/hh?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false&allowMultiQueries=true
-    username: test
-    password: Test@2019
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
+  profiles:
+    active: dev
   freemarker:
     allow-request-override: false
     allow-session-override: false
@@ -53,3 +33,14 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    basedir: web_tomcat
+  servlet:
+    session:
+      timeout: 14400
+  port: 8080
+
+logging:
+  config: classpath:logback.xml
