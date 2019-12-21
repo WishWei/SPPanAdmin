@@ -1,11 +1,10 @@
 package com.wish.common.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import org.springframework.util.StringUtils;
-
 
 
 public class MD5Utils {

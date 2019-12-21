@@ -29,6 +29,11 @@
         </dependency>
 
         <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
@@ -43,15 +48,21 @@
             <artifactId>domain</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.jadira.usertype</groupId>
-            <artifactId>usertype.core</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.jadira.usertype</groupId>-->
+<!--            <artifactId>usertype.core</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.hibernate</groupId>-->
+<!--                    <artifactId>hibernate-core</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.jadira.usertype</groupId>
-            <artifactId>usertype.spi</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.jadira.usertype</groupId>-->
+<!--            <artifactId>usertype.spi</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

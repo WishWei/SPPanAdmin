@@ -16,10 +16,10 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="favicon.ico"> 
-    <link href="${ctx!}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="${ctx!}/assets/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/animate.css" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -91,14 +91,14 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【<@shiro.principal type="net.sppan.base.entity.User" property="nickName"/>】
+                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【<@shiro.principal type="com.wish.domain.entity.User" property="nickName"/>】
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
                                     <a onclick="updatePwd()">
                                         <div>
                                             <i class="fa fa-refresh"></i> 修改密码
-                                            <span class="pull-right text-muted small"><@shiro.principal type="net.sppan.base.entity.User" property="userName"/></span>
+                                            <span class="pull-right text-muted small"><@shiro.principal type="com.wish.domain.entity.User" property="userName"/></span>
                                         </div>
                                     </a>
                                 </li>
@@ -106,7 +106,7 @@
                                     <a href="${ctx!}/admin/logout">
                                         <div>
                                             <i class="fa fa-remove"></i> 注销
-                                            <span class="pull-right text-muted small"><@shiro.principal type="net.sppan.base.entity.User" property="userName"/></span>
+                                            <span class="pull-right text-muted small"><@shiro.principal type="com.wish.domain.entity.User" property="userName"/></span>
                                         </div>
                                     </a>
                                 </li>
@@ -123,15 +123,15 @@
     </div>
 
     <!-- 全局js -->
-    <script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
-    <script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="${ctx!}/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="${ctx!}/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="${ctx!}/assets/js/plugins/layer/layer.min.js"></script>
+    <script src="${ctx!}/static/assets/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${ctx!}/static/assets/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="${ctx!}/static/assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="${ctx!}/static/assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="${ctx!}/static/assets/js/plugins/layer/layer.min.js"></script>
 
     <!-- 自定义js -->
-    <script src="${ctx!}/assets/js/hAdmin.js?v=4.1.0"></script>
-    <script type="text/javascript" src="${ctx!}/assets/js/index.js"></script>
+    <script src="${ctx!}/static/assets/js/hAdmin.js?v=4.1.0"></script>
+    <script type="text/javascript" src="${ctx!}/static/assets/js/index.js"></script>
     <script type="text/javascript">
     function updatePwd(){
 		layer.open({

@@ -1,10 +1,9 @@
 package com.wish.service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-
 import com.wish.domain.entity.User;
 import com.wish.service.support.IBaseService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 /**
  * <p>

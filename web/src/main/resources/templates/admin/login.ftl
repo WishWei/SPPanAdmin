@@ -8,11 +8,11 @@
     <title> - 登录</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link href="${ctx!}/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="${ctx!}/assets/css/animate.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/style.css" rel="stylesheet">
-    <link href="${ctx!}/assets/css/login.css" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/animate.css" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/style.css" rel="stylesheet">
+    <link href="${ctx!}/static/assets/css/login.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
@@ -51,15 +51,15 @@
     </div>
     
      <!-- 全局js -->
-    <script src="${ctx!}/assets/js/jquery.min.js?v=2.1.4"></script>
-    <script src="${ctx!}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="${ctx!}/static/assets/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${ctx!}/static/assets/js/bootstrap.min.js?v=3.3.6"></script>
 
     <!-- 自定义js -->
-    <script src="${ctx!}/assets/js/content.js?v=1.0.0"></script>
+    <script src="${ctx!}/static/assets/js/content.js?v=1.0.0"></script>
 
     <!-- jQuery Validation plugin javascript-->
-    <script src="${ctx!}/assets/js/plugins/validate/jquery.validate.min.js"></script>
-    <script src="${ctx!}/assets/js/plugins/validate/messages_zh.min.js"></script>
+    <script src="${ctx!}/static/assets/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="${ctx!}/static/assets/js/plugins/validate/messages_zh.min.js"></script>
 	<script type="text/javascript">
     $().ready(function() {
     	// 在键盘按下并释放及提交后验证提交表单

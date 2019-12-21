@@ -6,25 +6,26 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.wish.service.IResourceService;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
 
-import net.sppan.base.service.IResourceService;
 
 @Configuration
 @Import(ShiroManager.class)
 public class ShiroConfig {
 	
-	@Resource
+	@Autowired
 	private IResourceService resourceService;
 	
 

@@ -3,6 +3,7 @@ package com.wish.service.support.impl;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -22,7 +23,8 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
 
     @Override
     public T find(ID id) {
-        return getBaseDao().findOne(ID);
+        Optional<T> optional = getBaseDao().findById(id);
+        return optional.isPresent() ? optional.get() : null;
     }
 
     @Override	
@@ -33,7 +35,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
     @Override
     public List<T> findList(ID[] ids) {
         List<ID> idList = Arrays.asList(ids);
-        return getBaseDao().findAll(idList);
+        return getBaseDao().findAllById(idList);
     }
 
     @Override
@@ -58,7 +60,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
 
     @Override
     public boolean exists(ID id) {
-        return getBaseDao().exists(id);
+        return getBaseDao().existsById(id);
     }
 
     @Override
@@ -67,7 +69,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
     }
 
     public void save(Iterable<T> entitys) {
-        getBaseDao().save(entitys);
+        getBaseDao().saveAll(entitys);
     }
 
     @Override
@@ -77,7 +79,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
 
     @Override
     public void delete(ID id) {
-        getBaseDao().delete(id);
+        getBaseDao().deleteById(id);
     }
 
     @Override
@@ -93,12 +95,12 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
     @Override
     public void delete(T[] entitys) {
         List<T> tList = Arrays.asList(entitys);
-        getBaseDao().delete(tList);
+        getBaseDao().deleteAll(tList);
     }
 
     @Override
     public void delete(Iterable<T> entitys) {
-        getBaseDao().delete(entitys);
+        getBaseDao().deleteAll(entitys);
     }
 
     @Override
@@ -108,7 +110,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializa
 
     @Override
     public List<T> findList(Iterable<ID> ids) {
-        return getBaseDao().findAll(ids);
+        return getBaseDao().findAllById(ids);
     }
 
     @Override

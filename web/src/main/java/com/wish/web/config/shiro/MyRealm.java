@@ -3,11 +3,12 @@ package com.wish.web.config.shiro;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.wish.common.utils.MD5Utils;
 import com.wish.domain.entity.Resource;
 import com.wish.domain.entity.Role;
 import com.wish.domain.entity.User;
-import net.sppan.base.service.IUserService;
 
+import com.wish.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

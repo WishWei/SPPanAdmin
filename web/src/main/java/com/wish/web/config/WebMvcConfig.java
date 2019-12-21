@@ -13,14 +13,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4;
 
 @Configuration
-public class WebMvcConfig extends WebMvcConfigurerAdapter {
+public class WebMvcConfig extends WebMvcConfigurationSupport {
 	@Autowired
 	private CommonIntercepter commonIntercepter;
 
@@ -85,6 +86,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registration.setOrder(1);
         return registration;
     }
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
+		registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+
+	}
 	
 	
 }

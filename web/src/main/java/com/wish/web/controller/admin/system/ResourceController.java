@@ -2,6 +2,8 @@ package com.wish.web.controller.admin.system;
 
 import java.util.List;
 
+import com.wish.common.JsonResult;
+import com.wish.service.IResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -12,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import net.sppan.base.common.JsonResult;
 import com.wish.web.controller.BaseController;
 import com.wish.domain.entity.Resource;
-import net.sppan.base.service.IResourceService;
 import com.wish.domain.vo.ZtreeView;
 
 @Controller
@@ -70,7 +70,7 @@ public class ResourceController extends BaseController {
 	
 	@RequestMapping(value= {"/edit"}, method = RequestMethod.POST)
 	@ResponseBody
-	public JsonResult edit(Resource resource,ModelMap map){
+	public JsonResult edit(Resource resource, ModelMap map){
 		try {
 			resourceService.saveOrUpdate(resource);
 		} catch (Exception e) {

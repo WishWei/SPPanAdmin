@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.sppan.base.common.utils.MD5Utils;
-import net.sppan.base.dao.IUserDao;
+import com.wish.common.utils.MD5Utils;
+import com.wish.dao.IUserDao;
 import com.wish.dao.mapper.UserMapper;
 import com.wish.dao.support.IBaseDao;
 import com.wish.domain.entity.Role;
