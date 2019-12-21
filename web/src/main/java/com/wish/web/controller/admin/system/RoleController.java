@@ -1,6 +1,7 @@
 package com.wish.web.controller.admin.system;
 
 import com.wish.common.JsonResult;
+import com.wish.domain.po.RolePO;
 import com.wish.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wish.web.controller.BaseController;
-import com.wish.domain.entity.Role;
 
 @Controller
 @RequestMapping("/admin/role")
@@ -29,7 +29,7 @@ public class RoleController extends BaseController {
 
 	@RequestMapping(value = { "/list" })
 	@ResponseBody
-	public Page<Role> list(
+	public Page<RolePO> list(
 			@RequestParam(value="searchText",required=false) String searchText
 			) {
 //		SimpleSpecificationBuilder<Role> builder = new SimpleSpecificationBuilder<Role>();
@@ -38,7 +38,7 @@ public class RoleController extends BaseController {
 //			builder.add("name", Operator.likeAll.name(), searchText);
 //			builder.addOr("description", Operator.likeAll.name(), searchText);
 //		}
-		Page<Role> page = roleService.findAllByLike(searchText, getPageRequest());
+		Page<RolePO> page = roleService.findAllByLike(searchText, getPageRequest());
 		return page;
 	}
 	
@@ -50,7 +50,7 @@ public class RoleController extends BaseController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable Integer id,ModelMap map) {
-		Role role = roleService.find(id);
+		RolePO role = roleService.find(id);
 		map.put("role", role);
 		return "admin/role/form";
 	}
@@ -58,7 +58,7 @@ public class RoleController extends BaseController {
 	
 	@RequestMapping(value= {"/edit"},method = RequestMethod.POST)
 	@ResponseBody
-	public JsonResult edit(Role role, ModelMap map){
+	public JsonResult edit(RolePO role, ModelMap map){
 		try {
 			roleService.saveOrUpdate(role);
 		} catch (Exception e) {
@@ -81,7 +81,7 @@ public class RoleController extends BaseController {
 	
 	@RequestMapping(value = "/grant/{id}", method = RequestMethod.GET)
 	public String grant(@PathVariable Integer id, ModelMap map) {
-		Role role = roleService.find(id);
+		RolePO role = roleService.find(id);
 		map.put("role", role);
 		return "admin/role/grant";
 	}

@@ -7,6 +7,9 @@ import java.util.Set;
 
 import com.wish.common.Constats;
 import com.wish.dao.IResourceDao;
+import com.wish.domain.po.ResourcePO;
+import com.wish.domain.po.RolePO;
+import com.wish.domain.vo.ZtreeVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -15,12 +18,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.wish.dao.support.IBaseDao;
-import com.wish.domain.entity.Resource;
-import com.wish.domain.entity.Role;
 import com.wish.service.IResourceService;
 import com.wish.service.IRoleService;
 import com.wish.service.support.impl.BaseServiceImpl;
-import com.wish.domain.vo.ZtreeView;
 
 /**
  * <p>
@@ -31,7 +31,7 @@ import com.wish.domain.vo.ZtreeView;
  * @since 2016-12-28
  */
 @Service
-public class ResourceServiceImpl extends BaseServiceImpl<Resource, Integer>
+public class ResourceServiceImpl extends BaseServiceImpl<ResourcePO, Integer>
 		implements IResourceService {
 
 	@Autowired
@@ -41,21 +41,21 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, Integer>
 	private IRoleService roleService;
 
 	@Override
-	public IBaseDao<Resource, Integer> getBaseDao() {
+	public IBaseDao<ResourcePO, Integer> getBaseDao() {
 		return this.resourceDao;
 	}
 
 	@Override
 	@Cacheable(value= Constats.RESOURCECACHENAME,key="'tree_' + #roleId")
-	public List<ZtreeView> tree(int roleId) {
-		List<ZtreeView> resulTreeNodes = new ArrayList<ZtreeView>();
-		Role role = roleService.find(roleId);
-		Set<Resource> roleResources = role.getResources();
-		resulTreeNodes.add(new ZtreeView(0L, null, "系统菜单", true));
-		ZtreeView node;
-		List<Resource> all = resourceDao.findAllByOrderByParentAscIdAscSortAsc();
-		for (Resource resource : all) {
-			node = new ZtreeView();
+	public List<ZtreeVO> tree(int roleId) {
+		List<ZtreeVO> resulTreeNodes = new ArrayList<ZtreeVO>();
+		RolePO role = roleService.find(roleId);
+		Set<ResourcePO> roleResources = role.getResources();
+		resulTreeNodes.add(new ZtreeVO(0L, null, "系统菜单", true));
+		ZtreeVO node;
+		List<ResourcePO> all = resourceDao.findAllByOrderByParentAscIdAscSortAsc();
+		for (ResourcePO resource : all) {
+			node = new ZtreeVO();
 			node.setId(Long.valueOf(resource.getId()));
 			if (resource.getParent() == null) {
 				node.setpId(0L);
@@ -72,9 +72,9 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, Integer>
 	}
 
 	@Override
-	public void saveOrUpdate(Resource resource) {
+	public void saveOrUpdate(ResourcePO resource) {
 		if(resource.getId() != null){
-			Resource dbResource = find(resource.getId());
+			ResourcePO dbResource = find(resource.getId());
 			dbResource.setUpdateTime(new Date());
 			dbResource.setName(resource.getName());
 			dbResource.setSourceKey(resource.getSourceKey());
@@ -102,7 +102,7 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource, Integer>
 	}
 
 	@Override
-	public Page<Resource> findAllByLike(String searchText, PageRequest pageRequest) {
+	public Page<ResourcePO> findAllByLike(String searchText, PageRequest pageRequest) {
 		if(StringUtils.isBlank(searchText)){
 			searchText = "";
 		}

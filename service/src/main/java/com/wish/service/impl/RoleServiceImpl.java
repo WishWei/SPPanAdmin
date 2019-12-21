@@ -6,6 +6,8 @@ import java.util.Set;
 
 import com.wish.common.Constats;
 import com.wish.dao.IRoleDao;
+import com.wish.domain.po.ResourcePO;
+import com.wish.domain.po.RolePO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -15,8 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.wish.dao.support.IBaseDao;
-import com.wish.domain.entity.Resource;
-import com.wish.domain.entity.Role;
 import com.wish.service.IResourceService;
 import com.wish.service.IRoleService;
 import com.wish.service.support.impl.BaseServiceImpl;
@@ -30,7 +30,7 @@ import com.wish.service.support.impl.BaseServiceImpl;
  * @since 2016-12-28
  */
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements IRoleService {
+public class RoleServiceImpl extends BaseServiceImpl<RolePO, Integer> implements IRoleService {
 
 	@Autowired
 	private IRoleDao roleDao;
@@ -38,14 +38,14 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements I
 	private IResourceService resourceService;
 	
 	@Override
-	public IBaseDao<Role, Integer> getBaseDao() {
+	public IBaseDao<RolePO, Integer> getBaseDao() {
 		return this.roleDao;
 	}
 
 	@Override
-	public void saveOrUpdate(Role role) {
+	public void saveOrUpdate(RolePO role) {
 		if(role.getId() != null){
-			Role dbRole = find(role.getId());
+			RolePO dbRole = find(role.getId());
 			dbRole.setUpdateTime(new Date());
 			dbRole.setName(role.getName());
 			dbRole.setDescription(role.getDescription());
@@ -63,7 +63,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements I
 	
 	@Override
 	public void delete(Integer id) {
-		Role role = find(id);
+		RolePO role = find(id);
 		Assert.state(!"administrator".equals(role.getRoleKey()),"超级管理员角色不能删除");
 		super.delete(id);
 	}
@@ -71,12 +71,12 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements I
 	@Override
 	@CacheEvict(value = Constats.RESOURCECACHENAME, key = "'tree_' + #id")
 	public void grant(Integer id, String[] resourceIds) {
-		Role role = find(id);
+		RolePO role = find(id);
 		Assert.notNull(role, "角色不存在");
 		
 		Assert.state(!"administrator".equals(role.getRoleKey()),"超级管理员角色不能进行资源分配");
-		Resource resource;
-		Set<Resource> resources = new HashSet<Resource>();
+		ResourcePO resource;
+		Set<ResourcePO> resources = new HashSet<ResourcePO>();
 		if(resourceIds != null){
 			for (int i = 0; i < resourceIds.length; i++) {
 				if(StringUtils.isBlank(resourceIds[i]) || "0".equals(resourceIds[i])){
@@ -92,7 +92,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements I
 	}
 
 	@Override
-	public Page<Role> findAllByLike(String searchText, PageRequest pageRequest) {
+	public Page<RolePO> findAllByLike(String searchText, PageRequest pageRequest) {
 		if(StringUtils.isBlank(searchText)){
 			searchText = "";
 		}

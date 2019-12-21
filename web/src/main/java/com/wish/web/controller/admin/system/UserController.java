@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 import com.wish.common.JsonResult;
+import com.wish.domain.po.RolePO;
+import com.wish.domain.po.UserPO;
 import com.wish.service.IRoleService;
 import com.wish.service.IUserService;
 import org.apache.shiro.SecurityUtils;
@@ -20,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wish.web.controller.BaseController;
-import com.wish.domain.entity.Role;
-import com.wish.domain.entity.User;
 
 @Controller
 @RequestMapping("/admin/user")
@@ -39,7 +39,7 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = { "/list" })
 	@ResponseBody
-	public Page<User> list(
+	public Page<UserPO> list(
 			@RequestParam(value="searchText",required=false) String searchText
 			) {
 //		SimpleSpecificationBuilder<User> builder = new SimpleSpecificationBuilder<User>();
@@ -48,7 +48,7 @@ public class UserController extends BaseController {
 //			builder.add("nickName", Operator.likeAll.name(), searchText);
 //		}
 		
-		Page<User> page = userService.findAllByLike(searchText, getPageRequest());
+		Page<UserPO> page = userService.findAllByLike(searchText, getPageRequest());
 		return page;
 	}
 	
@@ -59,14 +59,14 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable Integer id,ModelMap map) {
-		User user = userService.find(id);
+		UserPO user = userService.find(id);
 		map.put("user", user);
 		return "admin/user/form";
 	}
 	
 	@RequestMapping(value= {"/edit"} ,method = RequestMethod.POST)
 	@ResponseBody
-	public JsonResult edit(User user, ModelMap map){
+	public JsonResult edit(UserPO user, ModelMap map){
 		try {
 			userService.saveOrUpdate(user);
 		} catch (Exception e) {
@@ -89,17 +89,17 @@ public class UserController extends BaseController {
 	
 	@RequestMapping(value = "/grant/{id}", method = RequestMethod.GET)
 	public String grant(@PathVariable Integer id, ModelMap map) {
-		User user = userService.find(id);
+		UserPO user = userService.find(id);
 		map.put("user", user);
 		
-		Set<Role> set = user.getRoles();
+		Set<RolePO> set = user.getRoles();
 		List<Integer> roleIds = new ArrayList<Integer>();
-		for (Role role : set) {
+		for (RolePO role : set) {
 			roleIds.add(role.getId());
 		}
 		map.put("roleIds", roleIds);
 		
-		List<Role> roles = roleService.findAll();
+		List<RolePO> roles = roleService.findAll();
 		map.put("roles", roles);
 		return "admin/user/grant";
 	}
@@ -130,7 +130,7 @@ public class UserController extends BaseController {
 			if(principal== null){
 				return JsonResult.failure("您尚未登录");
 			}
-			userService.updatePwd((User)principal, oldPassword, password1, password2);
+			userService.updatePwd((UserPO)principal, oldPassword, password1, password2);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.failure(e.getMessage());

@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @MapperScan({"com.wish.dao.mapper"})
-@EntityScan(basePackages = "com.wish.domain.entity")
+@EntityScan(basePackages = "com.wish.domain.po")
 @ComponentScans({@ComponentScan("com.wish.service.impl"),@ComponentScan("com.wish.web.controller")})
 @EnableJpaRepositories(basePackages = {"com.wish.dao"})
 

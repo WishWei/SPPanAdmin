@@ -1,4 +1,4 @@
-package com.wish.domain.entity.support;
+package com.wish.domain.po.support;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 @Data
-public abstract class BaseEntity implements Serializable{
+public abstract class BasePO implements Serializable{
 
 	/**
 	 * 

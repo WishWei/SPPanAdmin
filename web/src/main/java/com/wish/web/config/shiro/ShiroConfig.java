@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
+import com.wish.domain.po.ResourcePO;
 import com.wish.service.IResourceService;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;
@@ -69,8 +68,8 @@ public class ShiroConfig {
 		
 		filterChainDefinitionMap.put("/admin/login", "anon");
 		
-		List<com.wish.domain.entity.Resource> list = resourceService.findAll();
-		for (com.wish.domain.entity.Resource resource : list) {
+		List<ResourcePO> list = resourceService.findAll();
+		for (ResourcePO resource : list) {
 			filterChainDefinitionMap.put(resource.getSourceUrl(), "perms[" + resource.getSourceKey() + "]");
 		}
 		

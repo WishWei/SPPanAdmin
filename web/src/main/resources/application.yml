@@ -49,7 +49,7 @@ spring:
       enabled: true
 
 mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
 

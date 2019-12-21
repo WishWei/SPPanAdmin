@@ -1,4 +1,4 @@
-package com.wish.domain.entity;
+package com.wish.domain.po;
 
 
 import javax.persistence.Column;
@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
-import com.wish.domain.entity.support.BaseEntity;
+import com.wish.domain.po.support.BasePO;
 
 /**
  * <p>
@@ -24,7 +24,7 @@ import com.wish.domain.entity.support.BaseEntity;
  */
 @Entity
 @Table(name = "tb_resource")
-public class Resource extends BaseEntity {
+public class ResourcePO extends BasePO {
 
 	private static final long serialVersionUID = 1L;
 
@@ -85,7 +85,7 @@ public class Resource extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parent_id")
-	private Resource parent;
+	private ResourcePO parent;
 
 	public Integer getId() {
 		return id;
@@ -167,11 +167,11 @@ public class Resource extends BaseEntity {
 		this.description = description;
 	}
 
-	public Resource getParent() {
+	public ResourcePO getParent() {
 		return parent;
 	}
 
-	public void setParent(Resource parent) {
+	public void setParent(ResourcePO parent) {
 		this.parent = parent;
 	}
 

@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.wish.common.utils.MD5Utils;
-import com.wish.domain.entity.Resource;
-import com.wish.domain.entity.Role;
-import com.wish.domain.entity.User;
+import com.wish.domain.po.ResourcePO;
+import com.wish.domain.po.RolePO;
+import com.wish.domain.po.UserPO;
 
 import com.wish.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;
@@ -47,15 +47,15 @@ public class MyRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
-		User user = (User) principals.getPrimaryPrincipal();
+		UserPO user = (UserPO) principals.getPrimaryPrincipal();
 		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-		User dbUser = userService.findByUserName(user.getUserName());
+		UserPO dbUser = userService.findByUserName(user.getUserName());
 		Set<String> shiroPermissions = new HashSet<>();
 		Set<String> roleSet = new HashSet<String>();
-		Set<Role> roles = dbUser.getRoles();
-		for (Role role : roles) {
-			Set<Resource> resources = role.getResources();
-			for (Resource resource : resources) {
+		Set<RolePO> roles = dbUser.getRoles();
+		for (RolePO role : roles) {
+			Set<ResourcePO> resources = role.getResources();
+			for (ResourcePO resource : resources) {
 				shiroPermissions.add(resource.getSourceKey());
 				
 			}
@@ -71,7 +71,7 @@ public class MyRealm extends AuthorizingRealm {
 			AuthenticationToken token) throws AuthenticationException {
 		String username = (String) token.getPrincipal();
 		
-		User user = userService.findByUserName(username);
+		UserPO user = userService.findByUserName(username);
 		
 		String password = new String((char[]) token.getCredentials());
 

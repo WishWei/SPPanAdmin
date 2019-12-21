@@ -1,9 +1,9 @@
 package com.wish.service;
 
+import com.wish.domain.po.RolePO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import com.wish.domain.entity.Role;
 import com.wish.service.support.IBaseService;
 
 /**
@@ -14,13 +14,13 @@ import com.wish.service.support.IBaseService;
  * @author SPPan
  * @since 2016-12-28
  */
-public interface IRoleService extends IBaseService<Role,Integer> {
+public interface IRoleService extends IBaseService<RolePO,Integer> {
 
 	/**
 	 * 添加或者修改角色
 	 * @param role
 	 */
-	void saveOrUpdate(Role role);
+	void saveOrUpdate(RolePO role);
 
 	/**
 	 * 给角色分配资源
@@ -35,6 +35,6 @@ public interface IRoleService extends IBaseService<Role,Integer> {
 	 * @param pageRequest
 	 * @return
 	 */
-	Page<Role> findAllByLike(String searchText, PageRequest pageRequest);
+	Page<RolePO> findAllByLike(String searchText, PageRequest pageRequest);
 	
 }

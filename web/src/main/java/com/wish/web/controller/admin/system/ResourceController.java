@@ -3,6 +3,8 @@ package com.wish.web.controller.admin.system;
 import java.util.List;
 
 import com.wish.common.JsonResult;
+import com.wish.domain.po.ResourcePO;
+import com.wish.domain.vo.ZtreeVO;
 import com.wish.service.IResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wish.web.controller.BaseController;
-import com.wish.domain.entity.Resource;
-import com.wish.domain.vo.ZtreeView;
 
 @Controller
 @RequestMapping("/admin/resource")
@@ -26,8 +26,8 @@ public class ResourceController extends BaseController {
 	
 	@RequestMapping("/tree/{resourceId}")
 	@ResponseBody
-	public List<ZtreeView> tree(@PathVariable Integer resourceId){
-		List<ZtreeView> list = resourceService.tree(resourceId);
+	public List<ZtreeVO> tree(@PathVariable Integer resourceId){
+		List<ZtreeVO> list = resourceService.tree(resourceId);
 		return list;
 	}
 	
@@ -38,7 +38,7 @@ public class ResourceController extends BaseController {
 
 	@RequestMapping("/list")
 	@ResponseBody
-	public Page<Resource> list(
+	public Page<ResourcePO> list(
 			@RequestParam(value="searchText",required=false) String searchText
 			) {
 //		SimpleSpecificationBuilder<Resource> builder = new SimpleSpecificationBuilder<Resource>();
@@ -46,13 +46,13 @@ public class ResourceController extends BaseController {
 //		if(StringUtils.isNotBlank(searchText)){
 //			builder.add("name", Operator.likeAll.name(), searchText);
 //		}
-		Page<Resource> page = resourceService.findAllByLike(searchText,getPageRequest());
+		Page<ResourcePO> page = resourceService.findAllByLike(searchText,getPageRequest());
 		return page;
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String add(ModelMap map) {
-		List<Resource> list = resourceService.findAll();
+		List<ResourcePO> list = resourceService.findAll();
 		map.put("list", list);
 		return "admin/resource/form";
 	}
@@ -60,17 +60,17 @@ public class ResourceController extends BaseController {
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String edit(@PathVariable Integer id,ModelMap map) {
-		Resource resource = resourceService.find(id);
+		ResourcePO resource = resourceService.find(id);
 		map.put("resource", resource);
 		
-		List<Resource> list = resourceService.findAll();
+		List<ResourcePO> list = resourceService.findAll();
 		map.put("list", list);
 		return "admin/resource/form";
 	}
 	
 	@RequestMapping(value= {"/edit"}, method = RequestMethod.POST)
 	@ResponseBody
-	public JsonResult edit(Resource resource, ModelMap map){
+	public JsonResult edit(ResourcePO resource, ModelMap map){
 		try {
 			resourceService.saveOrUpdate(resource);
 		} catch (Exception e) {

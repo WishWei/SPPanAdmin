@@ -8,7 +8,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import com.wish.dao.support.IBaseDao;
-import com.wish.domain.entity.support.BaseEntity;
+import com.wish.domain.po.support.BasePO;
 import com.wish.service.support.IBaseService;
 
 import org.springframework.data.domain.Page;
@@ -17,7 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 
 @Transactional
-public abstract class BaseServiceImpl<T extends BaseEntity, ID extends Serializable> implements IBaseService<T, ID> {
+public abstract class BaseServiceImpl<T extends BasePO, ID extends Serializable> implements IBaseService<T, ID> {
 
     public abstract IBaseDao<T, ID> getBaseDao();
 

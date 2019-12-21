@@ -1,4 +1,4 @@
-package com.wish.domain.entity;
+package com.wish.domain.po;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.wish.domain.entity.support.BaseEntity;
+import com.wish.domain.po.support.BasePO;
 
 /**
  * <p>
@@ -24,7 +24,7 @@ import com.wish.domain.entity.support.BaseEntity;
  */
 @Entity
 @Table(name = "tb_role")
-public class Role extends BaseEntity {
+public class RolePO extends BasePO {
 
 	/**
 	 * 
@@ -61,7 +61,7 @@ public class Role extends BaseEntity {
 
 	@ManyToMany(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinTable(name = "tb_role_resource", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = { @JoinColumn(name = "resource_id") })
-	private java.util.Set<Resource> resources;
+	private java.util.Set<ResourcePO> resources;
 
 	public Integer getId() {
 		return id;
@@ -103,11 +103,11 @@ public class Role extends BaseEntity {
 		this.description = description;
 	}
 
-	public java.util.Set<Resource> getResources() {
+	public java.util.Set<ResourcePO> getResources() {
 		return resources;
 	}
 
-	public void setResources(java.util.Set<Resource> resources) {
+	public void setResources(java.util.Set<ResourcePO> resources) {
 		this.resources = resources;
 	}
 

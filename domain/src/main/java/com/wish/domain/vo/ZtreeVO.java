@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * ztree树
  */
-public class ZtreeView implements Serializable{
+public class ZtreeVO implements Serializable{
 
 	/**
 	 * 
@@ -22,10 +22,10 @@ public class ZtreeView implements Serializable{
 
 	private boolean checked = false;
 
-	public ZtreeView() {
+	public ZtreeVO() {
 	}
 
-	public ZtreeView(Long id, Long pId, String name, boolean open) {
+	public ZtreeVO(Long id, Long pId, String name, boolean open) {
 		super();
 		this.id = id;
 		this.pId = pId;

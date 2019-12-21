@@ -1,4 +1,4 @@
-package com.wish.domain.entity;
+package com.wish.domain.po;
 
 import java.util.Date;
 
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
-import com.wish.domain.entity.support.BaseEntity;
+import com.wish.domain.po.support.BasePO;
 
 /**
  * <p>
@@ -28,7 +28,7 @@ import com.wish.domain.entity.support.BaseEntity;
  */
 @Entity
 @Table(name = "tb_user")
-public class User extends BaseEntity {
+public class UserPO extends BasePO {
 
 	private static final long serialVersionUID = 1L;
 
@@ -101,7 +101,7 @@ public class User extends BaseEntity {
 
 	@ManyToMany(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinTable(name = "tb_user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
-	private java.util.Set<Role> roles;
+	private java.util.Set<RolePO> roles;
 
 	public Integer getId() {
 		return id;
@@ -199,11 +199,11 @@ public class User extends BaseEntity {
 		this.description = description;
 	}
 
-	public java.util.Set<Role> getRoles() {
+	public java.util.Set<RolePO> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(java.util.Set<Role> roles) {
+	public void setRoles(java.util.Set<RolePO> roles) {
 		this.roles = roles;
 	}
 

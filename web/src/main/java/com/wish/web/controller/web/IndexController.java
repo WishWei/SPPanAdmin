@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.wish.service.IUserService;
 import com.wish.web.controller.BaseController;
-import com.wish.domain.entity.User;
+import com.wish.domain.po.UserPO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class IndexController extends BaseController{
 
 	@RequestMapping(value={"/","/index"})
 	public String index(){
-		List<User> users = userService.findAll();
+		List<UserPO> users = userService.findAll();
 		logger.debug(users.toString());
 		return "index";
 	}

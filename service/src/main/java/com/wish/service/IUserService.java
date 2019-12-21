@@ -1,6 +1,6 @@
 package com.wish.service;
 
-import com.wish.domain.entity.User;
+import com.wish.domain.po.UserPO;
 import com.wish.service.support.IBaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,20 +13,20 @@ import org.springframework.data.domain.PageRequest;
  * @author SPPan
  * @since 2016-12-28
  */
-public interface IUserService extends IBaseService<User, Integer> {
+public interface IUserService extends IBaseService<UserPO, Integer> {
 
 	/**
 	 * 根据用户名查找用户
 	 * @param username
 	 * @return
 	 */
-	User findByUserName(String username);
+	UserPO findByUserName(String username);
 
 	/**
 	 * 增加或者修改用户
 	 * @param user
 	 */
-	void saveOrUpdate(User user);
+	void saveOrUpdate(UserPO user);
 
 	/**
 	 * 给用户分配角色
@@ -41,7 +41,7 @@ public interface IUserService extends IBaseService<User, Integer> {
 	 * @param pageRequest
 	 * @return
 	 */
-	Page<User> findAllByLike(String searchText, PageRequest pageRequest);
+	Page<UserPO> findAllByLike(String searchText, PageRequest pageRequest);
 
 	/**
 	 * 修改用户密码
@@ -50,6 +50,6 @@ public interface IUserService extends IBaseService<User, Integer> {
 	 * @param password1
 	 * @param password2
 	 */
-	void updatePwd(User user, String oldPassword, String password1, String password2);
+	void updatePwd(UserPO user, String oldPassword, String password1, String password2);
 
 }
