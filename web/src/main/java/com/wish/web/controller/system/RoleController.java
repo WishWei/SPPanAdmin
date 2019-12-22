@@ -1,4 +1,4 @@
-package com.wish.web.controller.admin.system;
+package com.wish.web.controller.system;
 
 import com.wish.common.JsonResult;
 import com.wish.domain.po.RolePO;

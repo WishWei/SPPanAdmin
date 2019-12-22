@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.wish.common.DateEditor;
+import com.wish.domain.po.UserPO;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.data.domain.PageRequest;
@@ -108,5 +111,13 @@ public class BaseController {
     	PageRequest pageRequest = new PageRequest(page, size, sort);
     	return pageRequest;
     }
+
+	/**
+	 * 获取当前登录用户
+	 * @return
+	 */
+	public UserPO getCurrentUserId(){
+		return (UserPO) SecurityUtils.getSubject().getPrincipal();
+	}
 
 }

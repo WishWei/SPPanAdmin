@@ -1,4 +1,4 @@
-package com.wish.web.controller.admin.system;
+package com.wish.web.controller.system;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,7 @@ import com.wish.domain.po.RolePO;
 import com.wish.domain.po.UserPO;
 import com.wish.service.IRoleService;
 import com.wish.service.IUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wish.web.controller.BaseController;
 
+@Slf4j
 @Controller
 @RequestMapping("/admin/user")
 public class UserController extends BaseController {
@@ -40,13 +42,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = { "/list" })
 	@ResponseBody
 	public Page<UserPO> list(
-			@RequestParam(value="searchText",required=false) String searchText
-			) {
-//		SimpleSpecificationBuilder<User> builder = new SimpleSpecificationBuilder<User>();
-//		String searchText = request.getParameter("searchText");
-//		if(StringUtils.isNotBlank(searchText)){
-//			builder.add("nickName", Operator.likeAll.name(), searchText);
-//		}
+			@RequestParam(value="searchText",required=false) String searchText) {
 		
 		Page<UserPO> page = userService.findAllByLike(searchText, getPageRequest());
 		return page;

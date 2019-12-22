@@ -1,6 +1,4 @@
-package com.wish.web.controller.admin;
-
-import com.wish.web.controller.BaseController;
+package com.wish.web.controller;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
