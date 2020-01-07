@@ -24,6 +24,7 @@
         <module>dao</module>
 		<module>service</module>
 		<module>web</module>
+		<module>app</module>
 	</modules>
 
 	<properties>
@@ -33,128 +34,6 @@
 		<lombok.version>1.16.8</lombok.version>
 		<swagger2.version>2.6.1</swagger2.version>
 	</properties>
-
-	<!-- Add typical dependencies for a web application -->
-<!--	<dependencies>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-tomcat</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-web</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-freemarker</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-cache</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-test</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>com.alibaba</groupId>-->
-<!--			<artifactId>druid</artifactId>-->
-<!--			<version>1.0.15</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>net.sf.ehcache</groupId>-->
-<!--			<artifactId>ehcache</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.apache.shiro</groupId>-->
-<!--			<artifactId>shiro-core</artifactId>-->
-<!--			<version>${shiro.version}</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.shiro</groupId>-->
-<!--			<artifactId>shiro-spring</artifactId>-->
-<!--			<version>${shiro.version}</version>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.apache.shiro</groupId>-->
-<!--			<artifactId>shiro-web</artifactId>-->
-<!--			<version>${shiro.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>mysql</groupId>-->
-<!--			<artifactId>mysql-connector-java</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.apache.commons</groupId>-->
-<!--			<artifactId>commons-lang3</artifactId>-->
-<!--			<version>3.3.2</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>joda-time</groupId>-->
-<!--			<artifactId>joda-time</artifactId>-->
-<!--		</dependency>-->
-
-<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.jadira.usertype</groupId>-->
-<!--			<artifactId>usertype.core</artifactId>-->
-<!--			<version>5.0.0.GA</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.jadira.usertype</groupId>-->
-<!--			<artifactId>usertype.spi</artifactId>-->
-<!--			<version>5.0.0.GA</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>com.alibaba</groupId>-->
-<!--			<artifactId>fastjson</artifactId>-->
-<!--			<version>1.2.15</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--		    <groupId>org.springframework.boot</groupId>-->
-<!--		    <artifactId>spring-boot-devtools</artifactId>-->
-<!--		    <optional>true</optional>&lt;!&ndash; optional=true,依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入 &ndash;&gt;-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.mybatis.spring.boot</groupId>-->
-<!--			<artifactId>mybatis-spring-boot-starter</artifactId>-->
-<!--			<version>${mybatis.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.projectlombok</groupId>-->
-<!--			<artifactId>lombok</artifactId>-->
-<!--			<version>${lombok.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>io.springfox</groupId>-->
-<!--			<artifactId>springfox-swagger2</artifactId>-->
-<!--			<version>${swagger2.version}</version>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>io.springfox</groupId>-->
-<!--			<artifactId>springfox-swagger-ui</artifactId>-->
-<!--			<version>${swagger2.version}</version>-->
-<!--		</dependency>-->
-
-<!--	</dependencies>-->
 
 	<dependencyManagement>
 
@@ -280,6 +159,14 @@
 				<artifactId>springfox-swagger-ui</artifactId>
 				<version>${swagger2.version}</version>
 			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
+			<dependency>
+				<groupId>org.springframework.security.oauth</groupId>
+				<artifactId>spring-security-oauth2</artifactId>
+				<version>2.0.12.RELEASE</version>
+			</dependency>
+
 
 		</dependencies>
 

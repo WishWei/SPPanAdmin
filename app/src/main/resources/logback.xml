@@ -2,7 +2,7 @@
 <configuration>
 	<!--======================================= 本地变量 ======================================== -->
 	<!-- 日志目录 -->
-	<property name="LOG_PATH" value="./logs/admin" />
+	<property name="LOG_PATH" value="./logs/app" />
 	<!--日志文件保留天数 -->
 	<property name="LOG_MAX_HISTORY" value="30" />
 	<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->

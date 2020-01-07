@@ -91,14 +91,14 @@
                     <ul class="nav navbar-top-links navbar-right">
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【<@shiro.principal type="com.wish.domain.entity.User" property="nickName"/>】
+                                <i class="fa fa-user"></i> <span class="label label-primary"></span>【<@shiro.principal type="com.wish.domain.po.User" property="nickName"/>】
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
                                     <a onclick="updatePwd()">
                                         <div>
                                             <i class="fa fa-refresh"></i> 修改密码
-                                            <span class="pull-right text-muted small"><@shiro.principal type="com.wish.domain.entity.User" property="userName"/></span>
+                                            <span class="pull-right text-muted small"><@shiro.principal type="com.wish.domain.po.User" property="userName"/></span>
                                         </div>
                                     </a>
                                 </li>
@@ -106,7 +106,7 @@
                                     <a href="${ctx!}/admin/logout">
                                         <div>
                                             <i class="fa fa-remove"></i> 注销
-                                            <span class="pull-right text-muted small"><@shiro.principal type="com.wish.domain.entity.User" property="userName"/></span>
+                                            <span class="pull-right text-muted small"><@shiro.principal type="com.wish.domain.po.User" property="userName"/></span>
                                         </div>
                                     </a>
                                 </li>

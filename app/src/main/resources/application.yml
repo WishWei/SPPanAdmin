@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    basedir: app_tomcat
+  servlet:
+    session:
+      timeout: 14400
+  port: 8081
+
+logging:
+  config: classpath:logback.xml
+
